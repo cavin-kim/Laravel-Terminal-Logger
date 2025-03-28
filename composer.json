@@ -1,0 +1,28 @@
+{
+    "name": "cavin-kim/laravel-terminal-logger",
+    "description": "A Laravel package to log all requests, queries, and views in the terminal.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kelvin Isaac Phiri",
+            "email": "calvinisaacphiri@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CavinKim\\LaravelTerminalLogger\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CavinKim\\LaravelTerminalLogger\\LoggerServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^9.0 || ^10.0"
+    }
+}
