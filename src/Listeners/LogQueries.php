@@ -16,4 +16,5 @@ class LogQueries
         echo "[BINDINGS] $bindings\n";
         echo "[TIME] {$time}ms\n";
     }
+    
 }

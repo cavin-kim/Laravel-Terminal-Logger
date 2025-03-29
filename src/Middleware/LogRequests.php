@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class LogRequests
 {
-    public function handle(Request $request, Closure $next)
-    {
+    public function handle(Request $request, Closure $next){
+        
         // Log request details
         $method = $request->getMethod();
         $url = $request->fullUrl();
