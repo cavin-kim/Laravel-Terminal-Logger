@@ -17,7 +17,7 @@ A lightweight Laravel package to log HTTP requests, responses, database queries,
 
 1. Install the package via Composer:
    ```bash
-   composer require yourvendor/laravel-terminal-logger
+   composer require cavin-kim/laravel-terminal-logger
    ```
 
 2. Publish the configuration file:

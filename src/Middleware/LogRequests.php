@@ -1,24 +1,31 @@
 <?php
 
-namespace CavinKim\LaravelDetailedLogger\Middleware;
+namespace CavinKim\LaravelTerminalLogger\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use CavinKim\LaravelTerminalLogger\Logger;
 
 class LogRequests
 {
-    public function handle(Request $request, Closure $next){
-        
+    public function handle(Request $request, Closure $next)
+    {
         // Log request details
-        $method = $request->getMethod();
-        $url = $request->fullUrl();
-        $headers = json_encode($request->headers->all());
-        $payload = json_encode($request->all());
+        Logger::request(
+            $request->getMethod(),
+            $request->fullUrl(),
+            $request->headers->all(),
+            $request->all()
+        );
 
-        echo "\n[REQUEST] $method $url\n";
-        echo "[HEADERS] $headers\n";
-        echo "[PAYLOAD] $payload\n";
+        $response = $next($request);
 
-        return $next($request);
+        // Log response
+        Logger::log('RESPONSE', json_encode([
+            'status' => $response->status(),
+            'content_type' => $response->headers->get('Content-Type'),
+        ]));
+
+        return $response;
     }
 }
