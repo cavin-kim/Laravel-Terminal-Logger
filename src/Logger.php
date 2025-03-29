@@ -7,7 +7,7 @@ class Logger
     public static function log(string $type, string $message): void
     {
         $timestamp = date('Y-m-d H:i:s');
-        fwrite(STDERR, "\n[$timestamp][$type] $message\n");
+        file_put_contents('php://stderr', "\n[$timestamp][$type] $message\n");
     }
 
     public static function request(string $method, string $url, array $headers, array $payload): void
