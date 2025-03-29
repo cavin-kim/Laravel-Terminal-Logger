@@ -11,18 +11,25 @@ use Illuminate\View\Events\ViewRendered;
 class LoggerServiceProvider extends ServiceProvider
 {
     public function boot()
-    {        
-        $this->app['router']->aliasMiddleware('log.requests', \CavinKim\LaravelTerminalLogger\Middleware\LogRequests::class);     
+    {
+        // Middleware for logging HTTP requests
+        $this->app['router']->aliasMiddleware('log.requests', \CavinKim\LaravelTerminalLogger\Middleware\LogRequests::class);
         $this->app['router']->pushMiddlewareToGroup('web', \CavinKim\LaravelTerminalLogger\Middleware\LogRequests::class);
         $this->app['router']->pushMiddlewareToGroup('api', \CavinKim\LaravelTerminalLogger\Middleware\LogRequests::class);
-                
-        Event::listen(QueryExecuted::class, \CavinKim\LaravelTerminalLogger\Listeners\LogQueries::class);
-        Event::listen(ViewRendered::class, function ($event) {echo "\n[VIEW] {$event->view->getName()}\n";});
 
+        // Log database queries
+        Event::listen(QueryExecuted::class, function ($query) {
+            Logger::query($query->sql, $query->time);
+        });
+
+        // Log rendered views
+        Event::listen(ViewRendered::class, function ($event) {
+            Logger::view($event->view->getName(), $event->view->getData());
+        });
     }
 
     public function register()
     {
-
+     
     }
 }
