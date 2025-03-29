@@ -3,11 +3,19 @@
 namespace CavinKim\LaravelTerminalLogger;
 
 class Logger
-{
+{    
+    const COLORS = [
+        'REQUEST' => "\033[34m", 
+        'QUERY'   => "\033[32m",
+        'VIEW'    => "\033[35m",
+        'RESET'   => "\033[0m",
+    ];
+
     public static function log(string $type, string $message): void
     {
         $timestamp = date('Y-m-d H:i:s');
-        $output = "\n[$timestamp][$type] $message\n";
+        $color = self::COLORS[$type] ?? self::COLORS['RESET'];
+        $output = "\n{$color}[$timestamp][$type] $message" . self::COLORS['RESET'] . "\n";
         fwrite(fopen('php://stderr', 'w'), $output);
     }
 
