@@ -1,7 +1,7 @@
 {
     "name": "cavin-kim/laravel-terminal-logger",
     "version": "1.0.0",
-    "description": "A Laravel package to log all requests, queries, and views in the terminal.",
+    "description": "A Laravel package to log all http requests, queries, and views in the terminal.",
     "type": "library",
     "license": "MIT",
     "authors": [
