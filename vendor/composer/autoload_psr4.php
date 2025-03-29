@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CavinKim\\LaravelDetailedLogger\\' => array($baseDir . '/src'),
+    'CavinKim\\LaravelTerminalLogger\\' => array($baseDir . '/src'),
 );

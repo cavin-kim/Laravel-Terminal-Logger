@@ -9,12 +9,12 @@ class ComposerStaticInit013ed98ce681d59d5ad3a10bd58e0477
     public static $prefixLengthsPsr4 = array (
         'C' => 
         array (
-            'CavinKim\\LaravelDetailedLogger\\' => 31,
+            'CavinKim\\LaravelTerminalLogger\\' => 31,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'CavinKim\\LaravelDetailedLogger\\' => 
+        'CavinKim\\LaravelTerminalLogger\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
