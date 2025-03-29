@@ -7,6 +7,8 @@ use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Facades\Event;
 use Illuminate\View\Events\ViewRendered;
 use Illuminate\Log\Events\MessageLogged;
+//use Logger;
+use CavinKim\LaravelTerminalLogger\Logger;
 
 class LoggerServiceProvider extends ServiceProvider
 {
